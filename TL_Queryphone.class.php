@@ -42,7 +42,7 @@
  * province:"河北"           省
  * telString:"15297566833"  电话
  */
-class Queryphone{
+class TL_Queryphone{
     const TAOBO_API = 'https://tcc.taobao.com/cc/json/mobile_tel_segment.htm';
 
     public static function query($phone){
