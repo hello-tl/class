@@ -48,7 +48,7 @@
  * Mysql_rows_result() 释放资源
  * function __destruct() 析构函数 自动关闭书库
  */
-class Mysql{
+class TL_Mysql{
 	private $conn;
 	private $result;
 	/*构造函数*/
