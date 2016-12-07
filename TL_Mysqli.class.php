@@ -48,7 +48,7 @@
  * Mysql_rows_result() 释放资源
  * function __destruct() 析构函数 自动关闭书库
  */
-class Mysql{
+class TL_Mysqli{
 	private $conn;
 	private $result;
 
@@ -186,7 +186,7 @@ class Mysql{
     }
 
     /**
-     * [encodeConvert description] 转换json
+     * [encodeConvert description] 字符集转换
      * @param  [type] $str      [description] 数组
      * @param  [type] $fromCode [description] gb2312
      * @param  [type] $toCode   [description] utf-8
