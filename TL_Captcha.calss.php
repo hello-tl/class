@@ -42,7 +42,7 @@
  * function __destruct() 析构函数保存 session 打印图片 销毁图片
  */
 
-class Captcha{
+class TL_Captcha{
 	private $image; //验证码图片
 	private $width; //验证码宽度
 	private $height; //验证码高度
