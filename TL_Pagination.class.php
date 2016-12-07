@@ -179,6 +179,7 @@ class TL_Pagination{
         if(self::$count>self::$perPage){
             self::leftandright();       //左边右边显示多少条处理
             self::beforePageUrl();      //当前页码之前
+            self::currentPageUrl();     //当前页码
             self::afterPageUrlsize();   //当前页码之后
         }else{
             self::comprehensive();      //综合全部显示
