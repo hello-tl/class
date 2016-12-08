@@ -39,7 +39,7 @@ class TL_Functions{
      * @param $array 数组
      * @return StdClass 对象
      */
-    public function array2object($array){
+    public function Array_Turn_Object($array){
         if (is_array($array)) {
             $obj = new StdClass();
             foreach ($array as $key => $val){
@@ -56,7 +56,7 @@ class TL_Functions{
      * @param $object 对象
      * @return mixed 数组
      */
-    public function object2array($object){
+    public function Object_Turn_Array($object){
         if(is_object($object)){
             foreach($object as $key => $value){
                 $array[$key] = $value;
@@ -72,7 +72,7 @@ class TL_Functions{
      * @param  [type] $size [description] 数值 Byte
      * @return [type]       [description] 返回 大小
      */
-    public function transByte($size='0'){
+    public function Trans_Byte($size='0'){
         //Bytes/KB/MB/GB/TB/EB/
         $arr = array('B','KB','MB','GB','TB','EB');
         $i = 0;
@@ -88,7 +88,7 @@ class TL_Functions{
      * 返回linux微妙时间戳
      * @return float 时间戳
      */
-    public function mymicrotime(){
+    public function My_Micro_Time(){
         //microtime 返回linux时间的微妙数
         list($usec, $sec) = explode(" ",microtime());
         return ((float)$usec + (float)$sec);
@@ -98,7 +98,7 @@ class TL_Functions{
      * 获取当前网速
      * @return float 网速
      */
-    function network(){
+    function Network(){
         //查询文件内容
         $data=file_get_contents(LONG."network.txt");
         //filesize 返回字节大小
@@ -124,7 +124,7 @@ class TL_Functions{
      * @param  [type] $lng2 [description] 店家位置维度
      * @return [type]       [description] 返回距离长度 单位是
      */
-    function getDistance($lat1, $lng1, $lat2, $lng2){
+    function Get_Distance($lat1, $lng1, $lat2, $lng2){
         $earthRadius = 6378138; //近似地球半径米
         // 转换为弧度
         $lat1 = ($lat1 * pi()) / 180;
@@ -138,5 +138,18 @@ class TL_Functions{
         $stepTwo = 2 * asin(min(1, sqrt($stepOne)));
         $calculatedDistance = $earthRadius * $stepTwo;
         return round($calculatedDistance);
+    }
+    /**
+     * [get description] 百度地图地址逆解析
+     * @return [type] [description]
+     */
+    function Map_Baidu_Inverse($address){
+        $address = $address;
+        $url='http://api.map.baidu.com/geocoder/v2/?address='.$address.'&output=json&ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW';
+        $html = file_get_contents($url);
+        $arr = json_decode($html);
+        $array['x'] = $arr->result->location->lng;
+        $array['y'] = $arr->result->location->lat;
+        return json_encode($array);
     }
 }
