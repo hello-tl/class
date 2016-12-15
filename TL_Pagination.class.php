@@ -60,7 +60,7 @@
 //获取分页
 //$list = page::page();
 
-//获取数据
+//获取数据集
 //$data=page::$data
 class TL_Pagination{
     public static $conn;
