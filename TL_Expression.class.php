@@ -43,8 +43,9 @@ class TL_Expression{
         $ret = false;
         //判断是否有值
         if($phone){
+			$phone_preg = '/^1[34578]{1}\d{9}$/';
             //判断是否是正确手机号
-            if(preg_match('/^1[34578]{1}\d{9}$/',$phone)){
+            if(preg_match($phone_preg,$phone)){
                 $ret = true;
             }
         }
@@ -60,8 +61,9 @@ class TL_Expression{
         $ret = false;
         //判断是否有值
         if($email_address){
+			$email_preg = '/^([0-9A-Za-z\\-_\\.]+)@([163,]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i';
             //判断是否是正确手机号
-            if(preg_match('/^([0-9A-Za-z\\-_\\.]+)@([163,]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i',$email_address)){
+            if(preg_match($email_preg,$email_address)){
                 $ret = true;
             }
         }
