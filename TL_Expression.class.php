@@ -39,12 +39,29 @@ class TL_Expression{
      * @param  [type] $phone [description] 手机号
      * @return [type]        [description]
      */
-    public function verifyPhone($phone = null){
+    public function Verify_Phone($phone = null){
         $ret = false;
         //判断是否有值
         if($phone){
             //判断是否是正确手机号
             if(preg_match('/^1[34578]{1}\d{9}$/',$phone)){
+                $ret = true;
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * [verifyPhone description] 效验邮箱地址 是否合法
+     * @param null $email_address 邮箱地址
+     * @return bool
+     */
+    public function Verify_Email_Address($email_address = null){
+        $ret = false;
+        //判断是否有值
+        if($email_address){
+            //判断是否是正确手机号
+            if(preg_match('/^([0-9A-Za-z\\-_\\.]+)@([163,]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i',$email_address)){
                 $ret = true;
             }
         }
