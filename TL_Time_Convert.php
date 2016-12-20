@@ -1,6 +1,6 @@
 <?php
 /**
- * 角度换算类
+ * 时间换算
  * QQ:群515448139
  */
 //                            _ooOoo_
@@ -33,34 +33,31 @@
 //                  奔驰宝马贵者趣，公交自行程序员。
 //                  别人笑我忒疯癫，我笑自己命太贱；
 //                  不见满街漂亮妹，哪个归得程序员？
-class TL_Angle_Convert{
-    private $TL_Circle_Circumference = 1;//圆周
-    private $TL_Radian = 6.2831855;//弧度
-    private $TL_Milli_Radian = 6283.18548;//毫弧度
-    private $TL_Degree = 360;//度
-    private $TL_Right_Angle = 4;//直角
-    private $TL_percentage_Degree = 399.99996;//百分度
-    private $TL_Get_Seconds = 1296000;//秒
-    private $TL_Get_Minutes = 21600;//分
-
-    //算出圆周  根据圆周换其他
+class TL_Time_Convert{
+    private $TL_Years = 0.0027397260273973;//年
+    private $TL_Weeks = 0.1428571428571429;//周
+    private $TL_Day = 1;//天
+    private $TL_Hours = 24;//时
+    private $TL_Min = 1440;//分
+    private $TL_Seconds = 86400;//秒
+    private $TL_Ms = 8640000;//毫秒
+    //算出天数  根据圆周换其他
     function __construct($value){
         if(is_array($value)){
-            $this->TL_Circle_Circumference = $value[1] / $this->$value[0];
+            $this->TL_Day = $value[1] / $this->$value[0];
         }else{
-            $this->TL_Circle_Circumference = $value;
+            $this->TL_Day = $value;
         }
     }
     function TL_Results(){
         $array = [
-            'TL_Circle_Circumference' => $this->TL_Circle_Circumference,
-            'TL_Radian' => $this->TL_Radian * $this->TL_Circle_Circumference,
-            'TL_Milli_Radian' => $this->TL_Milli_Radian * $this->TL_Circle_Circumference,
-            'TL_Degree' => $this->TL_Degree * $this->TL_Circle_Circumference,
-            'TL_Right_Angle' => $this->TL_Right_Angle * $this->TL_Circle_Circumference,
-            'TL_percentage_Degree' => $this->TL_percentage_Degree * $this->TL_Circle_Circumference,
-            'TL_Get_Seconds' => $this->TL_Get_Seconds * $this->TL_Circle_Circumference,
-            'TL_Get_Minutes' => $this->TL_Get_Minutes * $this->TL_Circle_Circumference,
+            'TL_Day' => $this->TL_Day,
+            'TL_Years' => $this->TL_Years * $this->TL_Day,
+            'TL_Weeks' => $this->TL_Weeks * $this->TL_Day,
+            'TL_Hours' => $this->TL_Hours * $this->TL_Day,
+            'TL_Min' => $this->TL_Min * $this->TL_Day,
+            'TL_Seconds' => $this->TL_Seconds * $this->TL_Day,
+            'TL_Ms' => $this->TL_Ms * $this->TL_Day,
         ];
         return $array;
     }
