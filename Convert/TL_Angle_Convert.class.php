@@ -1,6 +1,6 @@
 <?php
 /**
- * 热量换算
+ * 角度换算类
  * QQ:群515448139
  */
 //                            _ooOoo_
@@ -33,34 +33,34 @@
 //                  奔驰宝马贵者趣，公交自行程序员。
 //                  别人笑我忒疯癫，我笑自己命太贱；
 //                  不见满街漂亮妹，哪个归得程序员？
-class TL_Heat_Convert{
-    private $TL_Card = 1;//卡
-    private $TL_Kilocalorie = 0.001;//千卡
-    private $TL_Kw = 0.0000011627;//千瓦·时
-    private $TL_Bhp = 0.0000015593;//英制马力·时
-    private $TL_Horsepower = 0.0000015809;//米制马力·时
-    private $TL_Kg = 0.4269569; //公斤·米
-    private $TL_Btu = 0.0039674;//英热单位
-    private $TL_Feet = 3.0874843;//英尺·磅
+class TL_Angle_Convert{
+    private $TL_Circle_Circumference = 1;//圆周
+    private $TL_Radian = 6.2831855;//弧度
+    private $TL_Milli_Radian = 6283.18548;//毫弧度
+    private $TL_Degree = 360;//度
+    private $TL_Right_Angle = 4;//直角
+    private $TL_percentage_Degree = 399.99996;//百分度
+    private $TL_Get_Seconds = 1296000;//秒
+    private $TL_Get_Minutes = 21600;//分
 
-    //算出卡 根据卡换其他
+    //算出圆周  根据圆周换其他
     function __construct($value){
         if(is_array($value)){
-            $this->TL_Card = $value[1] / $this->$value[0];
+            $this->TL_Circle_Circumference = $value[1] / $this->$value[0];
         }else{
-            $this->TL_Card = $value;
+            $this->TL_Circle_Circumference = $value;
         }
     }
     function TL_Results(){
         $array = [
-            'TL_Card' => $this->TL_Card,
-            'TL_Kilocalorie' => $this->TL_Kilocalorie * $this->TL_Card,
-            'TL_Kw' => $this->TL_Kw * $this->TL_Card,
-            'TL_Bhp' => $this->TL_Bhp * $this->TL_Card,
-            'TL_Horsepower' => $this->TL_Horsepower * $this->TL_Card,
-            'TL_Kg' => $this->TL_Kg * $this->TL_Card,
-            'TL_Btu' => $this->TL_Btu * $this->TL_Card,
-            'TL_Feet' => $this->TL_Feet * $this->TL_Card,
+            'TL_Circle_Circumference' => $this->TL_Circle_Circumference,
+            'TL_Radian' => $this->TL_Radian * $this->TL_Circle_Circumference,
+            'TL_Milli_Radian' => $this->TL_Milli_Radian * $this->TL_Circle_Circumference,
+            'TL_Degree' => $this->TL_Degree * $this->TL_Circle_Circumference,
+            'TL_Right_Angle' => $this->TL_Right_Angle * $this->TL_Circle_Circumference,
+            'TL_percentage_Degree' => $this->TL_percentage_Degree * $this->TL_Circle_Circumference,
+            'TL_Get_Seconds' => $this->TL_Get_Seconds * $this->TL_Circle_Circumference,
+            'TL_Get_Minutes' => $this->TL_Get_Minutes * $this->TL_Circle_Circumference,
         ];
         return $array;
     }
