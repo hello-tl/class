@@ -47,7 +47,7 @@
 <ul>
     <li>HitLibrary 目录 // 需要撞库之类的操作
         <ul>
-            <li>─&nbsp;&nbsp;TL_Queryphone.class.php&nbsp;&nbsp;&nbsp;JD 生成图片 验证码类</li>
+            <li>─&nbsp;&nbsp;TL_Queryphone.class.php&nbsp;&nbsp;&nbsp;手机归属地</li>
         </ul>
     </li>
 </ul>
