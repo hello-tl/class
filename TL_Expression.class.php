@@ -69,4 +69,19 @@ class TL_Expression{
         }
         return $ret;
     }
+
+    /**
+     * @param $qq
+     * @return bool 效验qq是否正确
+     */
+    public static function qq($qq){
+        $ret = false;
+        if($qq){
+            $qq_preg = '/^[1-9]([0-9]{5,11})/';
+            if(preg_match($qq_preg,$qq)){
+                $ret = true;
+            }
+        }
+        return $ret;
+    }
 }
