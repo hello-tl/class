@@ -35,11 +35,11 @@
 //                  不见满街漂亮妹，哪个归得程序员？
 class TL_Density_Convert{
     private $TL_G = 1;//克/立方厘米
-    private $TL_Kg = 1;//千克/立方厘米
+    private $TL_Kg = 0.001;//千克/立方厘米
     private $TL_Kgs = 1;//千克/立方分米
-    private $TL_Gs = 1;//克/立方米
-    private $TL_Gss = 1;//克/立方分米
-    private $TL_KGss = 1;//千克/立方米
+    private $TL_Gs = 1000000;//克/立方米
+    private $TL_Gss = 1000;//克/立方分米
+    private $TL_KGss = 1000;//千克/立方米
 
     function __construct($value){
         if(is_array($value)){
