@@ -75,7 +75,7 @@ class TL_Functions{
     public function Trans_Byte($size='0'){
         //Bytes/KB/MB/GB/TB/EB/
         $arr = array('B','KB','MB','GB','TB','EB');
-        $i = 0;
+        $i   = 0;
         while($size>1024){
             $size/=1024;
             $i++;
@@ -100,19 +100,19 @@ class TL_Functions{
      */
     function Network(){
         //查询文件内容
-        $data=file_get_contents(LONG."network.txt");
+        $data       = file_get_contents(LONG."network.txt");
         //filesize 返回字节大小
-        $fsize=self::filesize(LONG."network.txt");
+        $fsize      = self::filesize(LONG."network.txt");
         //获取输出前的时间
-        $start=mymicrotime();
+        $start      = mymicrotime();
         //echo $fsize;
         echo "<!--".$data."-->";
         //获取输出后的时间
-        $stop=self::mymicrotime();
+        $stop       = self::mymicrotime();
         //输入内容前时间 - 输出内容后时间 s
-        $duration=($stop-$start);
+        $duration   = ($stop-$start);
         //四舍五入
-        $speed=round($fsize/$duration,2);
+        $speed      = round($fsize/$duration,2);
         return $speed;
     }
 
@@ -146,10 +146,49 @@ class TL_Functions{
     function Map_Baidu_Inverse($address){
         $address = $address;
         $url='http://api.map.baidu.com/geocoder/v2/?address='.$address.'&output=json&ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW';
-        $html = file_get_contents($url);
-        $arr = json_decode($html);
+        $html       = file_get_contents($url);
+        $arr        = json_decode($html);
         $array['x'] = $arr->result->location->lng;
         $array['y'] = $arr->result->location->lat;
         return json_encode($array);
+    }
+
+    /**
+     * 时间差计算
+     *
+     * @param Timestamp 时间差的时间戳
+     * @return String Time Elapsed
+     */
+    function Time_Turn_Units ($time){
+        $year   = floor($time / 60 / 60 / 24 / 365);
+        $time  -= $year * 60 * 60 * 24 * 365;
+        $month  = floor($time / 60 / 60 / 24 / 30);
+        $time  -= $month * 60 * 60 * 24 * 30;
+        $week   = floor($time / 60 / 60 / 24 / 7);
+        $time  -= $week * 60 * 60 * 24 * 7;
+        $day    = floor($time / 60 / 60 / 24);
+        $time  -= $day * 60 * 60 * 24;
+        $hour   = floor($time / 60 / 60);
+        $time  -= $hour * 60 * 60;
+        $minute = floor($time / 60);
+        $time  -= $minute * 60;
+        $second = $time;
+        $elapse = '';
+        $unitArr = array(
+            '年'  =>'year',
+            '个月'=>'month',
+            '周'=>'week',
+            '天'=>'day',
+            '小时'=>'hour',
+            '分钟'=>'minute',
+            '秒'=>'second'
+        );
+        foreach($unitArr as $cn => $u){
+            if($$u>0){
+                $elapse = $$u . $cn;
+                break;
+            }
+        }
+        return $elapse;
     }
 }
