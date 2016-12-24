@@ -33,7 +33,7 @@
 //                  奔驰宝马贵者趣，公交自行程序员。
 //                  别人笑我忒疯癫，我笑自己命太贱；
 //                  不见满街漂亮妹，哪个归得程序员？
-class TL_Heat_Convert{
+class TL_database_Convert{
     private $TL_Petabytes = 1;//拍字节
     private $TL_Bit = 9007386056566384;//比特
     private $TL_Byte = 1125923257070798;//字节
