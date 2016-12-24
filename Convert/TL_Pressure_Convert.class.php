@@ -35,18 +35,18 @@
 //                  不见满街漂亮妹，哪个归得程序员？
 class TL_Pressure_Convert{
     private $TL_Bar = 1;//巴
-    private $TL_Kpa = 1;//千帕
-    private $TL_Mpa = 1;//百帕
-    private $TL_Millibars = 1;//毫巴
-    private $TL_Pascal = 1;//帕斯卡
-    private $TL_Pressure = 1;//标准大气压
-    private $TL_Hg = 1;//毫米汞柱(托)
-    private $TL_Force = 1;//磅力/英尺㎡
-    private $TL_Forces = 1;//磅力/英寸㎡
-    private $TL_Mercury = 1;//英吋汞柱
-    private $TL_Kgf = 1;//公斤力/厘米㎡
-    private $TL_Kgfs = 1;//公斤力/米㎡
-    private $TL_Column = 1;//毫米水柱
+    private $TL_Kpa = 100;//千帕
+    private $TL_Mpa = 1000;//百帕
+    private $TL_Millibars = 1000;//毫巴
+    private $TL_Pascal = 100000;//帕斯卡
+    private $TL_Pressure = 0.9869233;//标准大气压
+    private $TL_Hg = 750.0616827;//毫米汞柱(托)
+    private $TL_Force = 2088.5435121;//磅力/英尺㎡
+    private $TL_Forces = 14.5037744;//磅力/英寸㎡
+    private $TL_Mercury = 29.5299875;//英吋汞柱
+    private $TL_Kgf = 1.0197162;//公斤力/厘米㎡
+    private $TL_Kgfs = 10197.1621298;//公斤力/米㎡
+    private $TL_Column = 10197.2;//毫米水柱
 
     function __construct($value){
         if(is_array($value)){
