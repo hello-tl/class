@@ -35,10 +35,10 @@
 //                  不见满街漂亮妹，哪个归得程序员？
 class TL_Temperature_Convert{
     private $TL_C = 1;//摄氏度
-    private $Fahrenheit = 1;//华氏度
-    private $TL_Kelvin = 1;//开氏度
-    private $TL_Change = 1;//兰氏度
-    private $TL_Column_Fahrenheit = 1;//列氏度
+    private $Fahrenheit = 33.8;//华氏度
+    private $TL_Kelvin = 274.15;//开氏度
+    private $TL_Change = 493.47;//兰氏度
+    private $TL_Column_Fahrenheit = 0.8;//列氏度
 
     function __construct($value){
         if(is_array($value)){
