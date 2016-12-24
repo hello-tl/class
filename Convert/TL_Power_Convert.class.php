@@ -35,14 +35,14 @@
 //                  不见满街漂亮妹，哪个归得程序员？
 class TL_Power_Convert{
     private $TL_Horsepower = 1;//米制马力
-    private $TL_Kilocalorie = 1;//千卡/秒
-    private $TL_Kw = 1;//千瓦
-    private $TL_Bhp = 1;//英制马力
-    private $TL_Feet = 1;//英尺·磅/秒
-    private $TL_Joule = 1;//焦耳/秒
-    private $TL_Btu = 1;//英热单位/秒
-    private $TL_Kg = 1;//公斤·米/秒/秒
-    private $TL_Newton = 1;//牛顿·米/秒
+    private $TL_Kilocalorie = 0.1757842;//千卡/秒
+    private $TL_Kw = 0.7354987;//千瓦
+    private $TL_Bhp = 0.9863201;//英制马力
+    private $TL_Feet = 542.4760385;//英尺·磅/秒
+    private $TL_Joule = 735.49875;//焦耳/秒
+    private $TL_Btu = 0.6971183;//英热单位/秒
+    private $TL_Kg = 75;//公斤·米/秒/秒
+    private $TL_Newton = 735.49875;//牛顿·米/秒
 
     //算出米制马力 根据米制马力换其他
     function __construct($value){
