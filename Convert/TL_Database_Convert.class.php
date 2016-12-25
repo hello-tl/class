@@ -53,12 +53,12 @@ class TL_database_Convert{
     function TL_Results(){
         $array = [
             'TL_Petabytes' => $this->TL_Petabytes,
-            'TL_Bit' => $this->TL_Bit * $this->petabytes,
-            'TL_Byte' => $this->TL_Byte * $this->petabytes,
-            'TL_Gigabyte' => $this->TL_Gigabyte * $this->petabytes,
-            'TL_Kilobytes' => $this->TL_Kilobytes * $this->petabytes,
-            'TL_Megabytes' => $this->TL_Megabytes * $this->petabytes,
-            'TL_Terabytes' => $this->TL_Terabytes * $this->petabytes,
+            'TL_Bit' => $this->TL_Bit * $this->TL_Petabytes,
+            'TL_Byte' => $this->TL_Byte * $this->TL_Petabytes,
+            'TL_Gigabyte' => $this->TL_Gigabyte * $this->TL_Petabytes,
+            'TL_Kilobytes' => $this->TL_Kilobytes * $this->TL_Petabytes,
+            'TL_Megabytes' => $this->TL_Megabytes * $this->TL_Petabytes,
+            'TL_Terabytes' => $this->TL_Terabytes * $this->TL_Petabytes,
         ];
         return $array;
     }
