@@ -64,12 +64,12 @@ class TL_Pressure_Convert{
             'TL_Pascal' => $this->TL_Pascal * $this->TL_Bar,
             'TL_Pressure' => $this->TL_Pressure * $this->TL_Bar,
             'TL_Hg' => $this->TL_Hg * $this->TL_Bar,
-            'TL_Force' => $this->TL_Hg * $this->TL_Force,
-            'TL_Forces' => $this->TL_Hg * $this->TL_Forces,
-            'TL_Mercury' => $this->TL_Hg * $this->TL_Mercury,
-            'TL_Kgf' => $this->TL_Hg * $this->TL_Kgf,
-            'TL_Kgfs' => $this->TL_Hg * $this->TL_Kgfs,
-            'TL_Column' => $this->TL_Hg * $this->TL_Column,
+            'TL_Force' => $this->TL_Force * $this->TL_Bar,
+            'TL_Forces' => $this->TL_Forces * $this->TL_Bar,
+            'TL_Mercury' => $this->TL_Mercury * $this->TL_Bar,
+            'TL_Kgf' => $this->TL_Kgf * $this->TL_Bar,
+            'TL_Kgfs' => $this->TL_Kgfs * $this->TL_Bar,
+            'TL_Column' => $this->TL_Column * $this->TL_Bar,
         ];
         return $array;
     }
