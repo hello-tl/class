@@ -95,6 +95,23 @@ class TL_Functions{
     }
 
     /**
+     * [transByte description] 转换字节大小
+     * @param  [type] $size [description] 数值 Byte
+     * @return [type]       [description] 返回 大小
+     */
+    public function transByte($size='0'){
+        //Bytes/KB/MB/GB/TB/EB/
+        $arr = array('B','KB','MB','GB','TB','EB');
+        $i = 0;
+        while($size>1024){
+            $size/=1024;
+            $i++;
+        }
+        $size = round($size,2).$arr[$i];
+        return $size;
+    }
+
+    /**
      * 获取当前网速
      * @return float 网速
      */
@@ -102,7 +119,7 @@ class TL_Functions{
         //查询文件内容
         $data       = file_get_contents(LONG."network.txt");
         //filesize 返回字节大小
-        $fsize      = self::filesize(LONG."network.txt");
+        $fsize      = $this->transByte(filesize(LONG."network.txt"));
         //获取输出前的时间
         $start      = mymicrotime();
         //echo $fsize;
@@ -139,6 +156,7 @@ class TL_Functions{
         $calculatedDistance = $earthRadius * $stepTwo;
         return round($calculatedDistance);
     }
+
     /**
      * [get description] 百度地图地址逆解析
      * @return [type] [description]
@@ -151,6 +169,17 @@ class TL_Functions{
         $array['x'] = $arr->result->location->lng;
         $array['y'] = $arr->result->location->lat;
         return json_encode($array);
+    }
+
+    /**
+     * [get description] 百度地图地址ip解析
+     * @return [type] [description]
+     */
+    function Map_Baidu_Ip($ip){
+        $ip = $ip;
+        $url='http://api.map.baidu.com/location/ip?ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW&ip='.$ip;
+        $html       = file_get_contents($url);
+        return $html;
     }
 
     /**
