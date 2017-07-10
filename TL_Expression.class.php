@@ -39,46 +39,49 @@ class TL_Expression{
      * @param  [type] $phone [description] 手机号
      * @return [type]        [description]
      */
-    public static function Verify_Phone($phone = null){
-        $ret = false;
-        //判断是否有值
-        if($phone){
-            $phone_preg = '/^1[34578]{1}\d{9}$/';
-            //判断是否是正确手机号
-            if(preg_match($phone_preg,$phone)){
-                $ret = true;
-            }
+    public static function Verify_Email($Email = null){
+        global $dArr;
+        $dArr = array(
+            '163.com','126.com','sina.com','yahoo.com.cn','yahoo.com','sohu.com','yeah.net','139.com',
+            'tom.com','21cn.com','qq.com','foxmail.com','gmail.com','hotmail.com','263.net',
+            'vip.qq.com','vip.163.com','vip.sina.com','vip.sina.com.cn','vip.foxmail.com',
+        );
+        if( empty($Email) ){
+            return false;
         }
-        return $ret;
+        list($e,$d) = explode('@', $Email);
+        if( !empty($e) && !empty($d) ){
+            $d = strtolower($d);
+            if( !in_array($d,$dArr) ) {return false;}
+            return preg_match('/^[a-z0-9]+([\+_\-\.]?[a-z0-9]+)*/i', $e);
+        }
+        return false;
     }
 
     /**
-     * [verifyPhone description] 效验邮箱地址 是否合法
-     * @param null $email_address 邮箱地址
-     * @return bool
+     * [verifyPhone description] 效验手机号码合法性
+     * @param  [type] $phone [description] 手机号
+     * @return [type]        [description]
      */
-    public static function Verify_Email_Address($email_address = null){
+    public static function Verify_Phone($Phone = null){
+        /**
+         * 移动：134、135、136、137、138、139、150、151、152、157、158、159、182、183、184、187、188、178(4G)、147(上网卡);
+         * 联通：130、131、132、155、156、185、186、176(4G)、145(上网卡);
+         * 电信：133、153、180、181、189 、177(4G);
+         * 卫星通信：1349;
+         * 虚拟运营商：170;
+         * 130、131、132、133、134、135、136、137、138、139
+         * 145、147
+         * 150、151、152、153、155、156、157、158、159
+         * 170、176、177、178
+         * 180、181、182、183、184、185、186、187、188、189
+         */
         $ret = false;
         //判断是否有值
-        if($email_address){
-            $email_preg = '/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i';
+        if($Phone){
+            $Phone_preg = '#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,6,7,8]{1}\d{8}$|^18[\d]{9}$#';
             //判断是否是正确手机号
-            if(preg_match($email_preg,$email_address)){
-                $ret = true;
-            }
-        }
-        return $ret;
-    }
-
-    /**
-     * @param $qq
-     * @return bool 效验qq是否正确
-     */
-    public static function qq($qq){
-        $ret = false;
-        if($qq){
-            $qq_preg = '/^[1-9]([0-9]{5,11})/';
-            if(preg_match($qq_preg,$qq)){
+            if(preg_match($Phone_preg,$Phone)){
                 $ret = true;
             }
         }
