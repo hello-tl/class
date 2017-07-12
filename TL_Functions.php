@@ -115,7 +115,7 @@ class TL_Functions{
      * 获取当前网速
      * @return float 网速
      */
-    function Network(){
+    public function Network(){
         //查询文件内容
         $data       = file_get_contents(LONG."network.txt");
         //filesize 返回字节大小
@@ -141,7 +141,7 @@ class TL_Functions{
      * @param  [type] $lng2 [description] 店家位置维度
      * @return [type]       [description] 返回距离长度 单位是
      */
-    function Get_Distance($lat1, $lng1, $lat2, $lng2){
+    public function Get_Distance($lat1, $lng1, $lat2, $lng2){
         $earthRadius = 6378138; //近似地球半径米
         // 转换为弧度
         $lat1 = ($lat1 * pi()) / 180;
@@ -161,7 +161,7 @@ class TL_Functions{
      * [get description] 百度地图地址逆解析
      * @return [type] [description]
      */
-    function Map_Baidu_Inverse($address){
+    public function Map_Baidu_Inverse($address){
         $address = $address;
         $url='http://api.map.baidu.com/geocoder/v2/?address='.$address.'&output=json&ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW';
         $html       = file_get_contents($url);
@@ -175,7 +175,7 @@ class TL_Functions{
      * [get description] 百度地图地址ip解析
      * @return [type] [description]
      */
-    function Map_Baidu_Ip($ip){
+    public function Map_Baidu_Ip($ip){
         $ip = $ip;
         $url='http://api.map.baidu.com/location/ip?ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW&ip='.$ip;
         $html       = file_get_contents($url);
@@ -188,7 +188,7 @@ class TL_Functions{
      * @param Timestamp 时间差的时间戳
      * @return String Time Elapsed
      */
-    function Time_Turn_Units ($time){
+    public function Time_Turn_Units ($time){
         $year   = floor($time / 60 / 60 / 24 / 365);
         $time  -= $year * 60 * 60 * 24 * 365;
         $month  = floor($time / 60 / 60 / 24 / 30);
@@ -228,7 +228,7 @@ class TL_Functions{
      * @param string $method : POST/GET，默认GET方式
      * @return mixed
      */
-    function getHttps($url, $data = '', $method = 'GET'){
+    public function getHttps($url, $data = '', $method = 'GET'){
         $curl = curl_init();                                                // 启动一个CURL会话608.69565217391
         curl_setopt($curl, CURLOPT_URL, $url);                              // 要访问的地址
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);                  // 对认证证书来源的检查
@@ -248,5 +248,47 @@ class TL_Functions{
         $tmpInfo = curl_exec($curl);                                        // 执行操作
         curl_close($curl);                                                  // 关闭CURL会话
         return $tmpInfo;                                                    // 返回数据
+    }
+
+    /**
+     * @param $data 传入时间年月日
+     * @return string 本月第一周开始时间
+     */
+    public function MstartDate($data){
+        $startDate = date("Y-m-",strtotime($data))."01";
+        $w = date('w',strtotime(date("Y-m-",strtotime($startDate))."01"));
+        if($w != "1"){
+            $s = 9 - $w;
+            $startDate = date("Y-m",strtotime($startDate)) . "-0" . $s;
+        }
+        return $startDate;
+    }
+
+    /**
+     * @param $data 传入时间年月日
+     * @return false|string 本月最后一周结束时间
+     */
+    public function MendDate($data){
+        $endDate = date("Y-m-",strtotime($data)) . date("t");
+        $e = date('w',strtotime(date("Y-m-",strtotime($endDate)) . date("t")))."<br>";
+        if($e != "7"){
+            $e = 7 - $e;
+            $endDate = date('Y-m-d',strtotime($endDate . " +".$e."day"));
+        }
+        return $endDate;
+    }
+
+    /**
+     * @param $data 传入时间年月日
+     * @return array 本周的开始时间和结束时间
+     */
+    public function Wee($data){
+        //本周的第一天和最后一天
+        $date=new DateTime($data);
+        $date->modify('this week');
+        $first_day_of_week = $date->format('Y-m-d');
+        $date->modify('this week +6 days');
+        $end_day_of_week = $date->format('Y-m-d');
+        return array('first_day_of_week'=>$first_day_of_week,'end_day_of_week'=>$end_day_of_week);
     }
 }
