@@ -291,4 +291,24 @@ class TL_Functions{
         $end_day_of_week = $date->format('Y-m-d');
         return array('first_day_of_week'=>$first_day_of_week,'end_day_of_week'=>$end_day_of_week);
     }
+    
+    //获取用户ip(外网ip 服务器上可以获取用户外网Ip 本机ip地址只能获取127.0.0.1)
+    function getip(){
+        if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+        $cip = $_SERVER["HTTP_CLIENT_IP"];
+        }
+        else if(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
+        $cip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        }
+        else if(!empty($_SERVER["REMOTE_ADDR"])){
+        $cip = $_SERVER["REMOTE_ADDR"];
+        }
+        else{
+        $cip = '';
+        }
+        preg_match("/[\d\.]{7,15}/", $cip, $cips);
+        $cip = isset($cips[0]) ? $cips[0] : 'unknown';
+        unset($cips);
+        return $cip;
+    }
 }
