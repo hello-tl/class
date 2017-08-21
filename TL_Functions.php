@@ -177,7 +177,7 @@ class TL_Functions{
      */
     public function Map_Baidu_Ip($ip){
         $ip = $ip;
-        $url='http://api.map.baidu.com/location/ip?ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW&ip='.$ip;
+        $url='http://api.map.baidu.com/location/ip?ak=t1DwS0Gq35mHDqd75uGS1bfnMxRdzNqW&ip='.$ip.'&coor=bd09ll';
         $html       = file_get_contents($url);
         return $html;
     }
